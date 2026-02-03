@@ -91,3 +91,18 @@ discord:
 
 messages:
   blocked: "&cLogin blocked: IP mismatch. Contact staff if this is wrong."
+```
+---
+
+## ❓ FAQ
+
+### Q: Can VPNs bypass this?
+### A: VPN users get blocked unless they reset IP. That’s the point.
+
+### Q: Can two people share one IP?
+### A: Yes. Same IP ≠ same username. This is IP → username, not the other way around.
+
+### Q: Is this better than AuthMe?
+### A: Different goal. AuthMe = passwords.
+### KatIPAuth = identity locking.
+### Use both if you’re paranoid lmao.
