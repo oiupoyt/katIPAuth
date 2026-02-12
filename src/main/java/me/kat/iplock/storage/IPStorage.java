@@ -16,7 +16,22 @@ import java.util.logging.Level;
 
 public class IPStorage {
 
-    public record Entry(String ip, long time) {
+    public static class Entry {
+        private final String ip;
+        private final long time;
+
+        public Entry(String ip, long time) {
+            this.ip = ip;
+            this.time = time;
+        }
+
+        public String ip() {
+            return ip;
+        }
+
+        public long time() {
+            return time;
+        }
     }
 
     private final JavaPlugin plugin;

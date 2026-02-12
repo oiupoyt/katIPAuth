@@ -1,7 +1,7 @@
 name: KatsIPAuth
 version: 1.0.0
 main: me.kat.iplock.IPLockPlugin
-api-version: '1.21'
+api-version: '1.19'
 commands:
   ipreset:
     description: Reset your IP binding
