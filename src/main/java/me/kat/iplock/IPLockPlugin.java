@@ -3,6 +3,7 @@ package me.kat.iplock;
 import me.kat.iplock.listener.PreLoginListener;
 import me.kat.iplock.storage.IPStorage;
 import me.kat.iplock.util.LogManager;
+import me.kat.iplock.util.VersionCheck;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class IPLockPlugin extends JavaPlugin {
@@ -10,6 +11,7 @@ public class IPLockPlugin extends JavaPlugin {
     private static IPLockPlugin instance;
     private IPStorage storage;
     private LogManager logManager;
+    private VersionCheck versionCheck;
 
     @Override
     public void onEnable() {
@@ -20,6 +22,9 @@ public class IPLockPlugin extends JavaPlugin {
         storage.load();
 
         logManager = new LogManager(this);
+
+        versionCheck = new VersionCheck(this);
+        versionCheck.checkForUpdates();
 
         getServer().getPluginManager().registerEvents(
                 new PreLoginListener(storage, logManager), this);
