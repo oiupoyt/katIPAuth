@@ -1,7 +1,6 @@
 package me.kat.iplock.util;
 
 import me.kat.iplock.IPLockPlugin;
-import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.BufferedReader;
@@ -72,7 +71,6 @@ public class VersionCheck {
     }
 
     private boolean isNewerVersion(String latest, String current) {
-        // Simple version comparison, assuming semantic versioning like 1.0.0 or 1.1.0
         String[] latestParts = latest.split("\\.");
         String[] currentParts = current.split("\\.");
 
