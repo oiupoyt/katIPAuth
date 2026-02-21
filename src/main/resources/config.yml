@@ -11,3 +11,7 @@ privacy:
 # Customizable messages
 messages:
   blocked: "&cLogin blocked: IP mismatch.If you believe this is a mistake contact the owner"
+
+# Beta features (Use with caution)
+beta:
+  subnet-locking: false # If true, players can join as long as they are in the same /24 subnet (e.g. 192.168.1.*)
