@@ -4,7 +4,7 @@ main: me.kat.iplock.IPLockPlugin
 api-version: '1.19'
 commands:
   ipreset:
-    description: Reset your IP binding
+    description: Reset a player's IP binding
     permission: ipauth.admin
   ipstatus:
     description: View IP bind status

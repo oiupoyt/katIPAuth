@@ -65,10 +65,6 @@ So you can watch account theft attempts like a Netflix series.
 
 ### Player Commands
 
-#### /ipreset
-- Resets your IP binding
-- Instantly kicks you
-- Next login = new IP bound
 #### /ipstatus
 - Shows if your IP is bound
 - Shows **when** it was bound
@@ -78,6 +74,10 @@ So you can watch account theft attempts like a Netflix series.
 
 ### Admin Commands (OP only, no funny business)
 
+#### /ipreset <player>
+- Resets the player’s IP binding
+- Instantly kicks the player
+- Next login = new IP bound
 #### /ipinfo <player>
 - Shows stored IP
 - Shows last bind/login time

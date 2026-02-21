@@ -13,15 +13,19 @@ public class IPResetCommand implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender s, Command c, String l, String[] a) {
-        if (!(s instanceof Player))
+        if (!s.hasPermission("ipauth.admin") || a.length != 1)
             return true;
-        Player p = (Player) s;
-        if (!p.hasPermission("ipauth.admin")) {
-            p.sendMessage("You don't have permission to use this command.");
-            return true;
+
+        String targetPlayer = a[0];
+        storage.remove(targetPlayer);
+
+        // Try to kick the player if they're online
+        Player target = s.getServer().getPlayer(targetPlayer);
+        if (target != null) {
+            target.kickPlayer("Your IP binding has been reset by an admin. Rejoin to bind new IP.");
         }
-        storage.remove(p.getName());
-        p.kickPlayer("IP reset. Rejoin to bind new IP.");
+
+        s.sendMessage("IP binding reset for player: " + targetPlayer);
         return true;
     }
 }
