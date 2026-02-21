@@ -12,7 +12,8 @@ public class IPForceCommand implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender s, Command c, String l, String[] a) {
-        if (!s.isOp() || a.length != 1) return true;
+        if (!s.hasPermission("ipauth.admin") || a.length != 1)
+            return true;
         storage.remove(a[0]);
         s.sendMessage("IP binding removed.");
         return true;
