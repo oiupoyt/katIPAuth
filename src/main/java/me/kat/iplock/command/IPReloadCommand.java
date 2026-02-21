@@ -15,11 +15,14 @@ public class IPReloadCommand implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender s, Command c, String l, String[] a) {
-        if (!s.hasPermission("ipauth.admin"))
+        if (!s.hasPermission("ipauth.admin")) {
+            s.sendMessage("You don't have permission to use this command.");
             return true;
+        }
+
         plugin.reloadConfig();
         storage.load();
-        s.sendMessage("KIA reloaded.");
+        s.sendMessage("KatIPAuth configuration reloaded successfully.");
         return true;
     }
 }

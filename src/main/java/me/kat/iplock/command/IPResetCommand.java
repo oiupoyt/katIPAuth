@@ -13,8 +13,15 @@ public class IPResetCommand implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender s, Command c, String l, String[] a) {
-        if (!s.hasPermission("ipauth.admin") || a.length != 1)
+        if (!s.hasPermission("ipauth.admin")) {
+            s.sendMessage("You don't have permission to use this command.");
             return true;
+        }
+
+        if (a.length != 1) {
+            s.sendMessage("Usage: /ipreset <player>");
+            return true;
+        }
 
         String targetPlayer = a[0];
         storage.remove(targetPlayer);

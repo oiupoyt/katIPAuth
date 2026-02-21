@@ -12,14 +12,21 @@ public class IPInfoCommand implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender s, Command c, String l, String[] a) {
-        if (!s.hasPermission("ipauth.admin") || a.length != 1)
+        if (!s.hasPermission("ipauth.admin")) {
+            s.sendMessage("You don't have permission to use this command.");
             return true;
+        }
+
+        if (a.length != 1) {
+            s.sendMessage("Usage: /ipinfo <player>");
+            return true;
+        }
 
         IPStorage.Entry e = storage.get(a[0]);
         if (e == null) {
-            s.sendMessage("No data.");
+            s.sendMessage("No IP data found for player: " + a[0]);
         } else {
-            s.sendMessage("IP: " + e.ip() + " | Time: " + e.time());
+            s.sendMessage("Player: " + a[0] + " | IP: " + e.ip() + " | Bound: " + e.time());
         }
         return true;
     }
