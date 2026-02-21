@@ -13,7 +13,8 @@ public class IPStatusCommand implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender s, Command c, String l, String[] a) {
-        if (!(s instanceof Player p)) return true;
+        if (!(s instanceof Player p))
+            return true;
 
         IPStorage.Entry e = storage.get(p.getName());
         if (e == null) {
