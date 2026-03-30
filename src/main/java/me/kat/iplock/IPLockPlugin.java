@@ -27,7 +27,7 @@ public class IPLockPlugin extends JavaPlugin {
         configUpdater.updateConfig();
 
         storage = new IPStorage(this);
-        storage.load();
+        storage.initialize();
 
         logManager = new LogManager(this);
 
@@ -53,7 +53,7 @@ public class IPLockPlugin extends JavaPlugin {
         getCommand("ipstatus").setExecutor(new me.kat.iplock.command.IPStatusCommand(storage));
         getCommand("ipinfo").setExecutor(new me.kat.iplock.command.IPInfoCommand(storage));
         getCommand("ipforce").setExecutor(new me.kat.iplock.command.IPForceCommand(storage));
-        getCommand("ipreload").setExecutor(new me.kat.iplock.command.IPReloadCommand(this, storage));
+        getCommand("ipreload").setExecutor(new me.kat.iplock.command.IPReloadCommand(this));
     }
 
     @Override
