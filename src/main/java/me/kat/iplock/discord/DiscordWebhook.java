@@ -18,11 +18,14 @@ public class DiscordWebhook {
             .getConfig()
             .getString("discord.webhook");
 
-        if (webhook == null || webhook.isBlank() || "PUT_WEBHOOK_URL_HERE".equals(webhook))
+        if (webhook == null || webhook.isBlank() || "PUT_WEBHOOK_URL_HERE".equals(webhook)) {
+          IPLockPlugin.get().getLogger().info("Discord webhook skipped: Not configured.");
           return;
+        }
 
-        // Validate Discord webhook URL format
-        if (!webhook.startsWith("https://discord.com/api/webhooks/") || webhook.split("/").length != 6) {
+        IPLockPlugin.get().getLogger().info("Sending IP block alert to Discord for player: " + user);
+
+        if (!webhook.startsWith("https://discord.com/api/webhooks/")) {
           IPLockPlugin.get().getLogger().warning("Invalid Discord webhook URL format");
           return;
         }
@@ -55,12 +58,12 @@ public class DiscordWebhook {
                       "inline": true
                     },
                     {
-                      "name": "Stored IP",
+                      "name": "Stored / Owner",
                       "value": "`%s`",
                       "inline": false
                     },
                     {
-                      "name": "Attempted IP",
+                      "name": "Attempt / Unauthorized",
                       "value": "`%s`",
                       "inline": false
                     }
@@ -90,6 +93,9 @@ public class DiscordWebhook {
         if (code < 200 || code >= 300) {
           IPLockPlugin.get().getLogger()
               .warning("Discord webhook failed (HTTP " + code + ")");
+        } else {
+          IPLockPlugin.get().getLogger()
+              .info("Discord webhook sent successfully for player: " + user);
         }
 
         con.disconnect();

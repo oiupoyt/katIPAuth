@@ -43,6 +43,13 @@ public class LogManager {
         } catch (IOException e) {
             plugin.getLogger().log(Level.SEVERE, "Could not write to log file: " + fileName, e);
         }
+
+        // Also log to console for visibility
+        if (success) {
+            plugin.getLogger().info(message);
+        } else {
+            plugin.getLogger().warning(message);
+        }
     }
 
     public String formatIp(String ip) {
