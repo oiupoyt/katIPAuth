@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URI;
 
 public class VersionCheck {
 
@@ -41,7 +42,7 @@ public class VersionCheck {
     }
 
     private String fetchLatestVersion(String urlString) throws Exception {
-        URL url = new URL(urlString);
+        URL url = URI.create(urlString).toURL();
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         connection.setConnectTimeout(5000);
@@ -55,7 +56,6 @@ public class VersionCheck {
                 response.append(line);
             }
 
-            // Parse JSON for "tag_name"
             String json = response.toString();
             int tagIndex = json.indexOf("\"tag_name\"");
             if (tagIndex != -1) {
