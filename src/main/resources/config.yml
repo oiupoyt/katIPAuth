@@ -8,9 +8,21 @@ discord:
 privacy:
   mask-ips: false # If true, last two octets of IPs will be replaced with x (e.g. 192.168.xx.xx)
 
+# Debug settings
+debug:
+  verbose: false # If true, print debug info in console for player joins, blocks, IP changes, etc.
+
+# Security settings
+security:
+  allow-multiple-accounts: true # If true, multiple UUIDs can bind to the same IP.
+  max-accounts-per-ip: 2 # Maximum number of accounts allowed per IP. Need allow-multiple-accounts=true for this to work.
+
 # Customizable messages
 messages:
-  blocked: "&cLogin blocked: IP mismatch.If you believe this is a mistake contact the owner"
+  blocked: "&cLogin blocked. If you believe this is a mistake contact the owner" # Default fallback message
+  uuid-ip-mismatch: "&cLogin blocked: UUID bound to different IP. Contact the owner if this is a mistake"
+  ip-uuid-mismatch: "&cLogin blocked: IP already bound to another account"
+  max-accounts: "&cLogin blocked: Maximum number of accounts reached for this IP"
 
 # Beta features (Use with caution)
 beta:
