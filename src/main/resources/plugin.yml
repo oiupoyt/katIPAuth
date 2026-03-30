@@ -1,7 +1,9 @@
 name: KatIPAuth
 version: 1.2.0
 main: me.kat.iplock.IPLockPlugin
-api-version: '1.19'
+api-version: "1.19"
+libraries:
+  - com.h2database:h2:2.4.240
 commands:
   ipreset:
     description: Reset a player's IP binding

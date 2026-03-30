@@ -21,6 +21,7 @@ repositories {
 
 dependencies {
     compileOnly "org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT"
+    implementation 'com.h2database:h2:2.4.240'
 }
 
 tasks.withType(JavaCompile).configureEach {
